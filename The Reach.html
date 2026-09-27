@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Reach</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#05070a; --navy:#0a1220; --charcoal:#12161c;
+  --crimson:#b3122a; --white:#eef1f5; --silver:#8b95a3;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{height:100%;background:var(--black);scroll-padding-top:env(safe-area-inset-top,0px);}
+body{height:100%;background:var(--black);color:var(--white);font-family:Arial,Helvetica,sans-serif;overflow-x:hidden;}
+.title-font{font-family:'Bebas Neue',Arial,sans-serif;}
+
+.scroll-space{height:750vh;position:relative;}
+.stage{position:sticky;top:0;width:100%;height:100vh;overflow:hidden;
+  background:linear-gradient(to bottom,var(--black) 0%,var(--navy) 55%,var(--charcoal) 100%);}
+.layer{position:absolute;inset:0;}
+#sky{background:radial-gradient(ellipse at 50% 15%,rgba(58,71,87,.4),transparent 62%);}
+.rain{position:absolute;inset:-20% -30%;
+  background-image:repeating-linear-gradient(100deg,rgba(190,205,225,.35) 0 1px,transparent 1px 16px);
+  animation:rainFall .55s linear infinite;opacity:.45;}
+@keyframes rainFall{from{background-position:0 0;}to{background-position:-46px 240px;}}
+#vignette{position:absolute;inset:0;box-shadow:inset 0 0 22vw 5vw rgba(0,0,0,.7);pointer-events:none;}
+#flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none;}
+
+.figure{position:absolute;left:50%;top:52%;pointer-events:none;}
+#tether{position:absolute;inset:0;pointer-events:none;}
+#tetherLine{stroke:var(--crimson);stroke-width:2;fill:none;}
+
+.card{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;pointer-events:none;padding:0 6vw;}
+.card h1{font-size:clamp(1.8rem,6vw,3.4rem);letter-spacing:.25em;opacity:0;}
+.card p{margin-top:.8rem;font-size:.7rem;letter-spacing:.45em;color:var(--silver);opacity:0;text-transform:uppercase;}
+
+.hint{position:absolute;bottom:6vh;left:0;right:0;text-align:center;font-size:.65rem;letter-spacing:.35em;color:var(--silver);}
+.hint i{display:block;width:1px;height:22px;background:var(--silver);margin:10px auto 0;animation:pulse 2.2s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:.15}50%{opacity:.9}}
+
+@media (prefers-reduced-motion: reduce){
+  .scroll-space{height:auto;}
+  .stage{position:relative;height:100vh;}
+  .rain{animation:none;}
+}
+</style>
+</head>
+<body>
+<div class="scroll-space" id="space">
+  <div class="stage" id="stage">
+    <div class="layer" id="sky"></div>
+    <svg class="layer" id="skyline" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMax slice"></svg>
+    <svg class="layer" id="mid" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMax slice"></svg>
+    <div class="rain"></div>
+
+    <div class="figure" id="falling"></div>
+    <div class="figure" id="hero"></div>
+    <svg id="tether" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <path id="tetherLine" d="M70 30 L38 58" stroke-dasharray="60" stroke-dashoffset="60"/>
+    </svg>
+
+    <div id="vignette"></div>
+    <div id="flash"></div>
+
+    <div class="card" id="introCard">
+      <h1 class="title-font" id="t1">THE REACH</h1>
+      <p id="t2">everything before the fall</p>
+    </div>
+    <div class="card" id="endCard" style="opacity:0">
+      <h1 class="title-font" style="font-size:clamp(1.3rem,4vw,2rem)">SOME MOMENTS STAY.</h1>
+    </div>
+
+    <div class="hint" id="hint">SCROLL<i></i></div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js"></script>
+<script>
+function skyline(id,count,fill,minH,maxH,op){
+  let s='';
+  const w=1000/count;
+  for(let i=0;i<count;i++){
+    const h=minH+Math.random()*(maxH-minH);
+    s+=`<rect x="${i*w}" y="${1000-h}" width="${w-3}" height="${h}" fill="${fill}" opacity="${op}"/>`;
+    if(Math.random()>.5){
+      s+=`<rect x="${i*w+w*0.35}" y="${1000-h+Math.random()*h*.6}" width="4" height="7" fill="#ffd98a" opacity="${(Math.random()*.4+.2).toFixed(2)}"/>`;
+    }
+  }
+  document.getElementById(id).innerHTML=s;
+}
+skyline('skyline',13,'#141b25',180,460,.85);
+skyline('mid',8,'#1b2430',280,650,1);
+
+document.getElementById('falling').innerHTML=
+ '<svg width="54" height="130" viewBox="0 0 54 130"><ellipse cx="27" cy="16" rx="13" ry="15" fill="#e2e6ea"/><path d="M27 31C9 45 7 82 14 118L23 116C20 87 25 64 27 55C29 64 34 87 31 116L40 118C47 82 45 45 27 31Z" fill="#eaeef1"/></svg>';
+document.getElementById('hero').innerHTML=
+ '<svg width="90" height="130" viewBox="0 0 90 130"><ellipse cx="55" cy="20" rx="13" ry="15" fill="#181d24"/><path d="M55 34C38 42 20 70 16 108L27 110C30 84 40 62 50 50C48 68 46 90 42 108L53 110C64 78 66 46 55 34Z" fill="#1e2530"/><line x1="63" y1="20" x2="85" y2="4" stroke="#1e2530" stroke-width="7" stroke-linecap="round"/></svg>';
+
+function revealStatic(){
+  ['t1','t2','falling','hero'].forEach(id=>{document.getElementById(id).style.opacity=1;});
+  document.getElementById('hero').style.transform='translate(-50%,-50%) translateX(-15vw)';
+  document.getElementById('falling').style.transform='translate(-50%,-50%) translateX(15vw)';
+  document.getElementById('hint').style.display='none';
+}
+
+try{
+if(typeof gsap==='undefined'||typeof ScrollTrigger==='undefined'){throw new Error('lib unavailable');}
+gsap.registerPlugin(ScrollTrigger);
+gsap.set(['#falling','#hero'],{xPercent:-50,yPercent:-50,opacity:0});
+gsap.set('#stage',{filter:'grayscale(0) brightness(1)'});
+
+if(matchMedia('(prefers-reduced-motion: reduce)').matches){
+  gsap.set(['#t1','#t2','#falling','#hero'],{opacity:1});
+  gsap.set('#hero',{x:'-15vw'});
+  gsap.set('#falling',{x:'15vw'});
+  gsap.set('#hint',{display:'none'});
+}else{
+  const tl=gsap.timeline({
+    scrollTrigger:{trigger:'#space',start:'top top',end:'bottom bottom',scrub:1}
+  });
+
+  tl.addLabel('intro')
+    .to('#t1',{opacity:1,duration:2})
+    .to('#t2',{opacity:1,duration:2},'<.3')
+    .to(['#t1','#t2'],{opacity:0,duration:1.4},'+=1.3')
+    .to('#hint',{opacity:0,duration:1},'<')
+
+    .addLabel('reveal')
+    .to('#falling',{opacity:1,x:'-4vw',y:'-32vh',scale:.35,duration:2},'reveal')
+    .to('#skyline',{y:-60,duration:3},'reveal')
+
+    .addLabel('fall')
+    .to('#falling',{y:'30vh',x:'-1vw',scale:.85,rotate:12,duration:5,ease:'power1.in'},'fall')
+    .to('#skyline',{y:-260,duration:5},'fall')
+    .to('#mid',{y:-480,duration:5},'fall')
+    .to('.rain',{opacity:.75,duration:5},'fall')
+
+    .addLabel('heroEntry')
+    .to('#hero',{opacity:1,x:'22vw',y:'18vh',scale:.55,duration:2},'heroEntry')
+    .to('#tetherLine',{strokeDashoffset:0,duration:1.6},'heroEntry+=.4')
+
+    .addLabel('approach')
+    .to('#falling',{x:'3vw',y:'2vh',scale:1.05,rotate:4,duration:5},'approach')
+    .to('#hero',{x:'-3vw',y:'4vh',scale:1.1,duration:5},'approach')
+    .to('#tetherLine',{opacity:0,duration:1},'approach')
+
+    .addLabel('hand')
+    .to(['#falling','#hero'],{scale:1.55,duration:6,ease:'power2.out'},'hand')
+    .to('#sky',{opacity:.15,duration:6},'hand')
+    .to('.rain',{opacity:.1,duration:6},'hand')
+
+    .addLabel('critical')
+    .to('#flash',{opacity:.95,duration:.12},'critical')
+    .to('#flash',{opacity:0,duration:1.3},'critical+=.12')
+
+    .addLabel('aftermath')
+    .to('#stage',{filter:'grayscale(.55) brightness(.75)',duration:5},'aftermath')
+    .to(['#falling','#hero'],{scale:.55,y:'-=8vh',duration:5},'aftermath')
+    .to('.rain',{opacity:.3,duration:5},'aftermath')
+
+    .addLabel('ending')
+    .to('#endCard',{opacity:1,duration:3},'ending')
+    .to('#stage',{filter:'grayscale(1) brightness(.35)',duration:3},'ending');
+}
+}catch(e){
+  revealStatic();
+}
+</script>
+</body>
+</html>
