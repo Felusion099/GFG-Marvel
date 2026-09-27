@@ -1,0 +1,27 @@
+{
+  "generated": "2026-09-28",
+  "note": "All placeholder art is generated procedurally. Drop custom files with the same localPath into public/assets/ to replace them. Serve over http (python3 -m http.server) for custom assets to load.",
+  "assets": [
+    { "name": "sky", "localPath": "environment/sky.png", "source": "procedural", "license": "original placeholder", "usage": "rooftop sky plate (intro through aftermath)", "attributionRequired": false },
+    { "name": "skyline-far", "localPath": "environment/skyline-far.png", "source": "procedural", "license": "original placeholder", "usage": "far skyline parallax layer", "attributionRequired": false },
+    { "name": "skyline-mid", "localPath": "environment/skyline-mid.png", "source": "procedural", "license": "original placeholder", "usage": "mid skyline parallax layer", "attributionRequired": false },
+    { "name": "bokeh", "localPath": "environment/bokeh.png", "source": "procedural", "license": "original placeholder", "usage": "city bokeh lights (screen blend)", "attributionRequired": false },
+    { "name": "rooftop", "localPath": "environment/rooftop.png", "source": "procedural", "license": "original placeholder", "usage": "rooftop floor, parapet, water tower", "attributionRequired": false },
+    { "name": "peter-conversation", "localPath": "peter/peter-conversation.png", "source": "procedural", "license": "original placeholder", "usage": "Peter standing calm (peterIntroduction through identity)", "attributionRequired": false },
+    { "name": "peter-lunge", "localPath": "peter/peter-lunge.png", "source": "procedural", "license": "original placeholder", "usage": "Peter protecting Jean (bullet/protectJean)", "attributionRequired": false },
+    { "name": "peter-stagger", "localPath": "peter/peter-stagger.png", "source": "procedural", "license": "original placeholder", "usage": "Peter wounded, reeling (impact/stagger)", "attributionRequired": false },
+    { "name": "peter-kneel", "localPath": "peter/peter-kneel.png", "source": "procedural", "license": "original placeholder", "usage": "Peter collapsing (fall)", "attributionRequired": false },
+    { "name": "peter-ground", "localPath": "peter/peter-ground.png", "source": "procedural", "license": "original placeholder", "usage": "Peter lying on ground (ground sequence)", "attributionRequired": false },
+    { "name": "jean-isolated", "localPath": "jean/jean-isolated.png", "source": "procedural", "license": "original placeholder", "usage": "Jean alone (jeanIsolation)", "attributionRequired": false },
+    { "name": "jean-conversation", "localPath": "jean/jean-conversation.png", "source": "procedural", "license": "original placeholder", "usage": "Jean in conversation", "attributionRequired": false },
+    { "name": "jean-reach", "localPath": "jean/jean-reach.png", "source": "procedural", "license": "original placeholder", "usage": "Jean reaching toward Peter (impact+0.5)", "attributionRequired": false },
+    { "name": "jean-push", "localPath": "jean/jean-push.png", "source": "procedural", "license": "original placeholder", "usage": "Jean shoved out of bullet path (protectJean)", "attributionRequired": false },
+    { "name": "jean-kneel", "localPath": "jean/jean-kneel.png", "source": "procedural", "license": "original placeholder", "usage": "Jean kneeling beside Peter (ground)", "attributionRequired": false },
+    { "name": "hospital-room", "localPath": "hospital/hospital-room.png", "source": "procedural", "license": "original placeholder", "usage": "Bellevue room (hospital)", "attributionRequired": false },
+    { "name": "hospital-peter", "localPath": "hospital/hospital-peter.png", "source": "procedural", "license": "original placeholder", "usage": "Peter in hospital bed (hospital/final)", "attributionRequired": false },
+    { "name": "blood-stain", "localPath": "blood/blood-stain.png", "source": "procedural", "license": "original placeholder", "usage": "impact stain layer", "attributionRequired": false },
+    { "name": "blood-spread", "localPath": "blood/blood-spread.png", "source": "procedural", "license": "original placeholder", "usage": "blood spread layer", "attributionRequired": false },
+    { "name": "blood-drip", "localPath": "blood/blood-drip.png", "source": "procedural", "license": "original placeholder", "usage": "blood drip layer (runs downward)", "attributionRequired": false },
+    { "name": "blood-ground", "localPath": "blood/blood-ground.png", "source": "procedural", "license": "original placeholder", "usage": "ground blood pool", "attributionRequired": false }
+  ]
+}

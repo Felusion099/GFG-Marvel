@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>BRAND NEW DAY — You Have Me</title>
+<meta name="description" content="A cinematic scroll-driven film experience.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="loader">
+  <div class="loader-web">
+    <svg viewBox="0 0 120 120" width="90" height="120" aria-hidden="true">
+      <g class="web-lines">
+        <line x1="60" y1="0" x2="60" y2="120"/>
+        <line x1="20" y1="10" x2="100" y2="110"/>
+        <line x1="100" y1="10" x2="20" y2="110"/>
+        <line x1="0" y1="45" x2="120" y2="75"/>
+        <line x1="0" y1="75" x2="120" y2="45"/>
+        <path d="M60 14 Q30 40 52 60 Q30 84 60 106 Q90 84 68 60 Q90 40 60 14"/>
+        <path d="M60 30 Q42 44 54 60 Q42 76 60 90 Q78 76 66 60 Q78 44 60 30"/>
+      </g>
+    </svg>
+  </div>
+  <div class="loader-text">LOADING EXPERIENCE</div>
+  <div class="loader-bar"><div class="loader-fill" id="loader-fill"></div></div>
+  <div class="loader-pct" id="loader-pct">0%</div>
+</div>
+
+<div id="experience" aria-label="Cinematic experience">
+  <div id="shake">
+    <div id="world">
+
+      <div id="stage-rooftop">
+        <div class="layer" data-depth="0.14" id="ly-sky"></div>
+        <div class="layer" data-depth="0.2" id="ly-skyline-far"></div>
+        <div class="layer" data-depth="0.28" id="ly-bokeh"></div>
+        <div class="layer" data-depth="0.4" id="ly-skyline-mid"></div>
+        <div class="layer" data-depth="0.85" id="ly-rooftop"></div>
+
+        <div class="layer" data-depth="0.9" id="ly-jean">
+          <div class="actor" id="jean-actor">
+            <div class="pose" data-pose="isolated"></div>
+            <div class="pose" data-pose="facing"></div>
+            <div class="pose" data-pose="reach"></div>
+            <div class="pose" data-pose="push"></div>
+            <div class="pose" data-pose="kneel"></div>
+          </div>
+        </div>
+
+        <div class="layer" data-depth="0.95" id="ly-peter">
+          <div class="actor" id="peter-actor">
+            <div class="pose" data-pose="stand"></div>
+            <div class="pose" data-pose="lunge"></div>
+            <div class="pose" data-pose="stagger"></div>
+            <div class="pose" data-pose="kneel"></div>
+            <div class="pose" data-pose="lying"></div>
+            <div class="blood blood-stain" id="blood-stain"></div>
+            <div class="blood blood-spread" id="blood-spread"></div>
+            <div class="blood blood-drip" id="blood-drip"></div>
+            <div class="blood blood-ground" id="blood-ground"></div>
+            <div class="breath" id="peter-breath"></div>
+          </div>
+        </div>
+
+        <div class="layer" data-depth="1.12" id="ly-fgrain-rain"></div>
+      </div>
+
+      <div id="stage-hospital">
+        <div class="layer" data-depth="0.3" id="ly-hospital-room"></div>
+        <div class="layer" data-depth="0.85" id="ly-hospital-peter"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <canvas id="rain"></canvas>
+  <div id="fog"></div>
+  <div id="grade-warm"></div>
+  <div id="grade-cold"></div>
+  <div id="vignette"></div>
+  <div id="sense-pulse"></div>
+  <div id="flash"></div>
+  <div id="blackout"></div>
+
+  <div id="bullet-streak"></div>
+
+  <div id="news-lower">
+    <div class="news-tag">DIALOGUE_HOSPITAL_NEWS</div>
+    <div class="news-line">NEWS_REPORT_PLACEHOLDER — authorized footage goes here</div>
+  </div>
+
+  <div id="title-card"><span>YOU HAVE ME.</span></div>
+  <div id="final-text"><span>YOU HAVE ME.</span></div>
+
+  <div id="letterbox-top"></div>
+  <div id="letterbox-bottom"></div>
+  <div id="subtitles"></div>
+</div>
+
+<div id="scroll-track"></div>
+
+<button id="sound-toggle" aria-label="Toggle sound">SOUND OFF</button>
+
+<div id="debug" hidden>
+  <div>PROGRESS <span id="dbg-progress">0%</span></div>
+  <div>SCENE <span id="dbg-scene">intro</span></div>
+  <div>LABEL <span id="dbg-label">intro</span></div>
+  <div>CAM <span id="dbg-cam">0 0 1.00</span></div>
+  <div>FPS <span id="dbg-fps">0</span></div>
+</div>
+
+<script src="js/vendor/gsap.min.js"></script>
+<script src="js/vendor/ScrollTrigger.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/procedural.js"></script>
+<script src="js/assets.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/effects.js"></script>
+<script src="js/camera.js"></script>
+<script src="js/timeline.js"></script>
+<script src="js/debug.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
